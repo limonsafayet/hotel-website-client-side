@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from 'react';
 import initializeAuthentication from "../utilities/firebase.init";
 import Swal from 'sweetalert2'
@@ -29,44 +29,6 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    const processLogin = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                setUser(result.user);
-            })
-            .catch(error => {
-                Swal.fire(
-                    'Error!',
-                    error.message,
-                    'error'
-                )
-            })
-            .finally(() => setIsLoading(false));
-    }
-
-    const registerNewUser = (email, password, name) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                setUser(result.user);
-                setUserName(name)
-            })
-            .catch(error => {
-                Swal.fire(
-                    'Error!',
-                    error.message,
-                    'error'
-                )
-            })
-            .finally(() => setIsLoading(false));
-    }
-    const setUserName = (name) => {
-        updateProfile(auth.currentUser, { displayName: name })
-        setUser(prev => ({
-            ...prev,
-            displayName: name
-        }))
-    }
-
     // observe user state change
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
@@ -92,8 +54,6 @@ const useFirebase = () => {
         user,
         isLoading,
         signInUsingGoogle,
-        processLogin,
-        registerNewUser,
         logOut
     }
 }

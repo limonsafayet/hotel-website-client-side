@@ -6,6 +6,7 @@ import logo from "../../assets/logo.png"
 
 function Header() {
     const { user, logOut } = useAuth();
+    console.log(user);
     return (
         <>
             <Navbar bg="dark" variant="dark" collapseOnSelect expand="lg" >
@@ -14,11 +15,11 @@ function Header() {
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         {user?.email ?
-                            <Button onClick={logOut} variant="light">Logout</Button> :
+                            <Button onClick={logOut} variant="outline-light">Logout</Button> :
                             <Nav.Link as={Link} to="/login"><Button variant="outline-light">Login</Button></Nav.Link>}
                         {user?.displayName ?
                             <Navbar.Text className="ms-3">
-                                Signed in as: <span className="text-light">{user?.displayName}</span>
+                                <img src={user?.photoURL} style={{ width: "50px", borderRadius: "50%" }} />
                             </Navbar.Text> : ""
                         }
                     </Navbar.Collapse>
