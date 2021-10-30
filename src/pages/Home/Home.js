@@ -9,7 +9,7 @@ function Home() {
         <>
             <Banner></Banner>
             <Services></Services>
-            <section className="bg-light">
+            <section className="bg-light text-muted">
                 <Rooms></Rooms>
             </section>
             <Row className="m-0">
