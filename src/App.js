@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Footer from "./components/Footer/Footer";
 
 import Header from './components/Header/Header';
 import AuthProvider from './contexts/AuthProvider';
@@ -22,6 +23,7 @@ function App() {
               <Login></Login>
             </Route>
           </Switch>
+          <Footer></Footer>
         </Router>
       </AuthProvider>
     </>
