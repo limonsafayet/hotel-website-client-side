@@ -1,9 +1,42 @@
 import React from 'react'
+import axios from 'axios';
 import { Col, Container, Row, Table, Button } from 'react-bootstrap'
+import Swal from 'sweetalert2';
 import useRooms from '../../hooks/useRooms';
 
 function RoomList() {
     const [roomsData] = useRooms();
+    const handleDelete = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`${process.env.REACT_APP_BACKEND_URL}/rooms/${id}`)
+                    .then(res => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        //setCallback(true)
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!'
+                        })
+                    })
+
+            }
+        })
+    }
     return (
         <Container>
             <Row>
@@ -30,7 +63,7 @@ function RoomList() {
                                     <td>{room.price}/Night</td>
                                     <td>{room.description}</td>
                                     <td><img src={room.img} alt={room.name} style={{ width: "150px" }} /></td>
-                                    <td><Button variant="danger"><i className="fas fa-trash-alt"></i></Button></td>
+                                    <td><Button variant="danger" onClick={() => handleDelete(room._id)}><i className="fas fa-trash-alt"></i></Button></td>
                                 </tr>
                             )}
                         </tbody>
