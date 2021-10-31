@@ -1,4 +1,3 @@
-import { NotFound } from "http-errors";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Footer from "./components/Footer/Footer";
 import Header from './components/Header/Header';
@@ -11,6 +10,7 @@ import ManageBookedRooms from "./pages/RoomBook/ManageBookedRooms";
 import MyRoomBookings from "./pages/RoomBook/MyRoomBookings";
 import RoomBook from "./pages/RoomBook/RoomBook";
 import PrivateRoute from "./utilities/privateRoute";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
