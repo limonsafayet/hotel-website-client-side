@@ -7,7 +7,7 @@ function SingleRoom({ room }) {
         <>
             <Col xs={12} md={4} className="mb-4">
                 <Card className="border rounded-3 shadow-lg">
-                    <img src={img} className="img-fluid mb-2" />
+                    <img src={img} alt={name} className="img-fluid mb-2" />
                     <div className="p-3">
                         <h4>{name}</h4>
                         <p>Room Size: <b>{size}</b> sqft</p>
