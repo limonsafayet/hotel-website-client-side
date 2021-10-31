@@ -5,6 +5,7 @@ import AuthProvider from './contexts/AuthProvider';
 import Home from './pages/Home/Home';
 import Login from "./pages/Login/Login";
 import RoomForm from "./pages/Room/RoomForm";
+import RoomList from "./pages/Room/RoomList";
 import PrivateRoute from "./utilities/privateRoute";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Login></Login>
             </Route>
             <PrivateRoute path="/room/create" exact component={RoomForm} />
+            <PrivateRoute path="/room/list" exact component={RoomList} />
           </Switch>
           <Footer></Footer>
         </Router>

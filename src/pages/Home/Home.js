@@ -5,6 +5,7 @@ import Rooms from '../../components/Rooms/Rooms'
 import Services from '../../components/Services/Services'
 
 function Home() {
+
     return (
         <>
             <Banner></Banner>

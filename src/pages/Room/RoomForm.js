@@ -2,17 +2,29 @@ import React from 'react'
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { Col, Container, Row, Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 function RoomForm() {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         //console.log(data);
 
-        axios.post('http://localhost:5000/services', data)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/rooms`, data)
             .then(res => {
                 if (res.data.insertedId) {
-                    alert('added successfully');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Room has been created'
+                    })
                     reset();
                 }
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!'
+                })
             })
     }
     return (

@@ -7,7 +7,7 @@ import "./Header.css"
 
 function Header() {
     const { user, logOut } = useAuth();
-    console.log(user);
+    //console.log(user);
     return (
         <>
             <Navbar bg="dark" variant="dark" collapseOnSelect expand="lg" >
@@ -18,11 +18,12 @@ function Header() {
 
                         {user?.email ?
                             <>
+                                <Nav.Link as={Link} to="/room/list">Room List</Nav.Link>
                                 <Nav.Link as={Link} to="/room/create">Create Room</Nav.Link>
                                 <Button onClick={logOut} variant="outline-light ms-2">Logout</Button>
                             </>
                             :
-                            <Nav.Link as={Link} to="/login"><Button variant="outline-light">Login</Button></Nav.Link>}
+                            <Button as={Link} to="/login" variant="outline-light">Login</Button>}
                         {user?.displayName ?
                             <Navbar.Text className="ms-3">
                                 <img src={user?.photoURL} style={{ width: "50px", borderRadius: "50%" }} />
