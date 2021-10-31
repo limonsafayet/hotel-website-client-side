@@ -37,11 +37,42 @@ function ManageBookedRooms() {
             }
         })
     }
+    const handleEdit = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You wont to update the status",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.put(`${process.env.REACT_APP_BACKEND_URL}/roombookings/${id}`)
+                    .then(res => {
+                        Swal.fire(
+                            'Updated!',
+                            'Status has been updated.',
+                            'success'
+                        )
+                        setBookedRooms(bookedRooms.filter(item => (item._id == id) ? item.status = ((item.status == "true") ? "false" : "true") : ""));
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!'
+                        })
+                    })
+
+            }
+        })
+    }
     return (
         <Container>
             <Row className="mb-5">
-                <Col xs={12} md={12} className="mx-auto card bg-light shadow-lg mt-5 mb-5 p-5">
-                    <h2>My Booked Rooms</h2>
+                <Col xs={12} md={12} className="mx-auto card bg-light shadow-lg mt-5 mb-5 py-5">
+                    <h2>Manage Booked Rooms</h2>
                     <Table striped responsive className="mt-3">
                         <thead>
                             <tr>
@@ -57,7 +88,7 @@ function ManageBookedRooms() {
                                 <th>CheckOut</th>
                                 <th>Total</th>
                                 <th>Status</th>
-                                <th>Cancel Booking</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,7 +106,10 @@ function ManageBookedRooms() {
                                     <td>{data.checkOutDate}</td>
                                     <td>{data.totalPrice} TK</td>
                                     <td>{data.status == "true" ? <Button variant="success">Approved</Button> : <Button variant="warning">Pending</Button>}</td>
-                                    <td><Button variant="danger" onClick={() => handleDelete(data._id)}><i className="fas fa-trash-alt"></i></Button></td>
+                                    <td>
+                                        <Button variant="primary" onClick={() => handleEdit(data._id)}><i class="fas fa-pencil-alt"></i> Status</Button>
+                                        <Button variant="danger" className="mt-1" onClick={() => handleDelete(data._id)}><i className="fas fa-trash-alt"></i> Delete</Button>
+                                    </td>
                                 </tr>
                             )}
                         </tbody>

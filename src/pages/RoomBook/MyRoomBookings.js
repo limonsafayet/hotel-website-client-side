@@ -46,7 +46,7 @@ function MyRoomBookings() {
     return (
         <Container>
             <Row className="mb-5">
-                <Col xs={12} md={12} className="mx-auto card bg-light shadow-lg mt-5 mb-5 p-5">
+                <Col xs={12} md={12} className="mx-auto card bg-light shadow-lg mt-5 mb-5 py-5">
                     <h2>My Booked Rooms</h2>
                     <Table striped responsive className="mt-3">
                         <thead>
