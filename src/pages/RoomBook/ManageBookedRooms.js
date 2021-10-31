@@ -6,6 +6,7 @@ import useBookedRooms from '../../hooks/useBookedRooms';
 
 function ManageBookedRooms() {
     const [bookedRooms, setBookedRooms] = useBookedRooms();
+    //console.log(bookedRooms)
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -55,7 +56,8 @@ function ManageBookedRooms() {
                             'Status has been updated.',
                             'success'
                         )
-                        setBookedRooms(bookedRooms.filter(item => (item._id == id) ? item.status = ((item.status == "true") ? "false" : "true") : ""));
+                        setBookedRooms(bookedRooms.filter(item => (item._id == id) ? item.status = ((item.status == "true") ? "false" : "true") : item));
+
                     })
                     .catch(err => {
                         Swal.fire({
@@ -107,7 +109,7 @@ function ManageBookedRooms() {
                                     <td>{data.totalPrice} TK</td>
                                     <td>{data.status == "true" ? <Button variant="success">Approved</Button> : <Button variant="warning">Pending</Button>}</td>
                                     <td>
-                                        <Button variant="primary" onClick={() => handleEdit(data._id)}><i class="fas fa-pencil-alt"></i> Status</Button>
+                                        <Button variant="primary" onClick={() => handleEdit(data._id)}><i className="fas fa-pencil-alt"></i> Status</Button>
                                         <Button variant="danger" className="mt-1" onClick={() => handleDelete(data._id)}><i className="fas fa-trash-alt"></i> Delete</Button>
                                     </td>
                                 </tr>
