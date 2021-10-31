@@ -7,7 +7,7 @@ const useBookedRooms = () => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/roombookings`)
             .then(res => setBookedRooms(res.data))
-    }, [bookedRooms]);
+    }, []);
     return [bookedRooms, setBookedRooms];
 }
 

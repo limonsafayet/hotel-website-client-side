@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import useRooms from '../../hooks/useRooms';
 
 function RoomList() {
-    const [roomsData] = useRooms();
+    const [roomsData, setRoomsData] = useRooms();
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -21,10 +21,10 @@ function RoomList() {
                     .then(res => {
                         Swal.fire(
                             'Deleted!',
-                            'Your file has been deleted.',
+                            'Room has been deleted.',
                             'success'
                         )
-                        //setCallback(true)
+                        setRoomsData(roomsData.filter(item => item._id !== id));
                     })
                     .catch(err => {
                         Swal.fire({

@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import axios from 'axios';
 import { Col, Container, Row, Table, Button } from 'react-bootstrap'
 import Swal from 'sweetalert2';
-import useAuth from '../../hooks/useAuth';
+import useBookedRooms from '../../hooks/useBookedRooms';
 
-function MyRoomBookings() {
-    const [bookedRooms, setBookedRooms] = useState([]);
-    const { user } = useAuth();
-    useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/roombookings/${user?.email}`)
-            .then(res => setBookedRooms(res.data))
-    }, []);
-
+function ManageBookedRooms() {
+    const [bookedRooms, setBookedRooms] = useBookedRooms();
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -27,7 +21,7 @@ function MyRoomBookings() {
                     .then(res => {
                         Swal.fire(
                             'Deleted!',
-                            'Your booked room has been deleted.',
+                            'Booked room has been deleted.',
                             'success'
                         )
                         setBookedRooms(bookedRooms.filter(item => item._id !== id));
@@ -92,4 +86,4 @@ function MyRoomBookings() {
     )
 }
 
-export default MyRoomBookings
+export default ManageBookedRooms

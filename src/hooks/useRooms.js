@@ -7,7 +7,7 @@ const useRooms = () => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/rooms`)
             .then(res => setRoomsData(res.data))
-    }, [roomsData]);
+    }, []);
     return [roomsData, setRoomsData];
 }
 

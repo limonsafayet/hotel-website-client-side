@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Login from "./pages/Login/Login";
 import RoomForm from "./pages/Room/RoomForm";
 import RoomList from "./pages/Room/RoomList";
+import ManageBookedRooms from "./pages/RoomBook/ManageBookedRooms";
 import MyRoomBookings from "./pages/RoomBook/MyRoomBookings";
 import RoomBook from "./pages/RoomBook/RoomBook";
 import PrivateRoute from "./utilities/privateRoute";
@@ -30,6 +31,7 @@ function App() {
             <PrivateRoute path="/room/list" exact component={RoomList} />
             <PrivateRoute path="/room-book" exact component={RoomBook} />
             <PrivateRoute path="/my-booked-room" exact component={MyRoomBookings} />
+            <PrivateRoute path="/manage-booked-room" exact component={ManageBookedRooms} />
           </Switch>
           <Footer></Footer>
         </Router>
