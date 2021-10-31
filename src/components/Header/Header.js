@@ -18,6 +18,7 @@ function Header() {
 
                         {user?.email ?
                             <>
+                                <Nav.Link as={Link} to="/my-booked-room">My Booked Rooms</Nav.Link>
                                 <Nav.Link as={Link} to="/room/list">Room List</Nav.Link>
                                 <Nav.Link as={Link} to="/room/create">Create Room</Nav.Link>
                                 <Button onClick={logOut} variant="outline-light ms-2">Logout</Button>
