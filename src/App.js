@@ -1,3 +1,4 @@
+import { NotFound } from "http-errors";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Footer from "./components/Footer/Footer";
 import Header from './components/Header/Header';
@@ -32,6 +33,9 @@ function App() {
             <PrivateRoute path="/room-book" exact component={RoomBook} />
             <PrivateRoute path="/my-booked-room" exact component={MyRoomBookings} />
             <PrivateRoute path="/manage-booked-room" exact component={ManageBookedRooms} />
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
           <Footer></Footer>
         </Router>
