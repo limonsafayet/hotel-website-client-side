@@ -41,7 +41,7 @@ function Footer() {
 
                     <div className="row mt-3">
 
-                        <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <div className="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
 
                             <h6 className="text-uppercase fw-bold mb-4">
                                 <img src={logo} alt="LS Hospital Ltd" />
@@ -51,7 +51,7 @@ function Footer() {
                             </p>
                         </div>
 
-                        <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <div className="col-md-4 col-lg-2 col-xl-3 mx-auto mb-4">
 
                             <h6 className="text-uppercase fw-bold mb-4">
                                 DHAKA OFFICE
@@ -59,7 +59,7 @@ function Footer() {
                             <p><i className="fas fa-home me-3"></i> Gulshan Main Road, Dhaka</p>
                             <p>
                                 <i className="fas fa-envelope me-3"></i>
-                                dhk@lshospital.com
+                                dhk@luxuryhotel.com
                             </p>
                             <p><i className="fas fa-phone me-3"></i> +88 01713388855</p>
                             <p><i className="fas fa-print me-3"></i> +88 02 8145622</p>

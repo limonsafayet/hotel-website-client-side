@@ -6,7 +6,7 @@ function SingleRoom({ room }) {
     const { name, size, price, img, description } = room;
     return (
         <>
-            <Col xs={12} md={4} className="mb-4">
+            <Col xs={12} md={6} lg={4} className="mb-4">
                 <Card className="border rounded-3 shadow-lg">
                     <img src={img} alt={name} className="img-fluid mb-2" />
                     <div className="p-3">
