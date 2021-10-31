@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Login from "./pages/Login/Login";
 import RoomForm from "./pages/Room/RoomForm";
 import RoomList from "./pages/Room/RoomList";
+import RoomBook from "./pages/RoomBook/RoomBook";
 import PrivateRoute from "./utilities/privateRoute";
 
 function App() {
@@ -18,14 +19,15 @@ function App() {
             <Route exact path="/">
               <Home></Home>
             </Route>
-            <Route path="/home">
+            <Route exact path="/home">
               <Home></Home>
             </Route>
-            <Route path="/login">
+            <Route exact path="/login">
               <Login></Login>
             </Route>
             <PrivateRoute path="/room/create" exact component={RoomForm} />
             <PrivateRoute path="/room/list" exact component={RoomList} />
+            <PrivateRoute path="/room-book" exact component={RoomBook} />
           </Switch>
           <Footer></Footer>
         </Router>

@@ -39,11 +39,11 @@ function RoomForm() {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="forRoomSize">
                             <Form.Label>Room Size</Form.Label>
-                            <Form.Control {...register("size")} type="text" placeholder="Room Size" required />
+                            <Form.Control {...register("size")} type="number" placeholder="Room Size" required />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="forRoomPrice">
                             <Form.Label>Room Price</Form.Label>
-                            <Form.Control {...register("price")} type="text" placeholder="Room Price" required />
+                            <Form.Control {...register("price")} type="number" placeholder="Room Price" required />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="forImageUrl">
                             <Form.Label>Image URL</Form.Label>
