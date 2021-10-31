@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Footer from "./components/Footer/Footer";
-
 import Header from './components/Header/Header';
 import AuthProvider from './contexts/AuthProvider';
 import Home from './pages/Home/Home';
 import Login from "./pages/Login/Login";
+import RoomForm from "./pages/Room/RoomForm";
+import PrivateRoute from "./utilities/privateRoute";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
+            <PrivateRoute path="/room/create" exact component={RoomForm} />
           </Switch>
           <Footer></Footer>
         </Router>
