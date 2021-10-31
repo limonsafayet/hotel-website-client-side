@@ -14,7 +14,8 @@ function RoomBook({ location: { state } }) {
     const onSubmit = data => {
         //console.log(data);
         const totalPrice = calculatePrice()
-        const finalData = { ...data, totalPrice }
+        const status = false;
+        const finalData = { ...data, totalPrice, status }
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/roombookings`, finalData)
             .then(res => {
                 if (res.data.insertedId) {
